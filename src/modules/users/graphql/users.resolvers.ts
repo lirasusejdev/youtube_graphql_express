@@ -1,22 +1,22 @@
-import { container } from "tsyringe";
-import { CreateUserService } from "../services/CreateUserService";
-import { GetUsersService } from "../services/GetUsersService";
+import { container } from 'tsyringe'
+import { CreateUserService } from '../services/CreateUserService'
+import { GetUsersService } from '../services/GetUsersService'
 
 const usersResolvers = {
   Query: {
     getAllUsers() {
-      const getUsersService = container.resolve(GetUsersService);
-      const users = getUsersService.execute();
-      return users;
-    },
+      const getUsersService = container.resolve(GetUsersService)
+      const users = getUsersService.execute()
+      return users
+    }
   },
   Mutation: {
-    createUser(_, { input }) {
-      const createUserService = container.resolve(CreateUserService);
-      const user = createUserService.execute(input);
-      return user;
-    },
-  },
-};
+    createUser({ input }) {
+      const createUserService = container.resolve(CreateUserService)
+      const user = createUserService.execute(input)
+      return user
+    }
+  }
+}
 
-export default usersResolvers;
+export default usersResolvers
